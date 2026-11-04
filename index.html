@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Magusa Klinik Tahlil Laboratuvarı</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600&family=Onest:wght@400;500;600&display=swap">
+<style>
+/* Layout: info bar, header, hero with contact card, departments grid, home-collection band, social responsibility, 7/24 emergency band, footer */
+:root{
+  --bg:#FFFFFF; --surface:#FFFFFF; --ink:#1B2224; --muted:#5E686B; --line:#E7EAEB;
+  --accent:#0B6B6F; --on-accent:#FFFFFF; --soft:#F2F4F5; --softer:#F8F9FA; --chip-line:#D8DDDF;
+  --display:'Geologica',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --body:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+a:hover{opacity:.85}
+a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+h1,h2,h3,p,ul{margin:0}
+ul{list-style:none;padding:0}
+.in{max-width:1200px;margin:0 auto;padding-left:max(clamp(16px,4vw,40px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,4vw,40px),env(safe-area-inset-right,0px))}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.h2{font-family:var(--display);font-weight:600;font-size:clamp(28px,3.6vw,40px);letter-spacing:-0.025em;line-height:1.12;text-wrap:balance}
+.link{font-weight:600;color:var(--accent);text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-block;padding:14px 26px;border-radius:999px;font-weight:600;border:1px solid transparent;min-height:44px}
+.btn-fill{background:var(--accent);color:var(--on-accent)}
+.btn-line{background:var(--surface);color:var(--ink);border-color:var(--chip-line)}
+.head{display:flex;flex-direction:column;gap:8px;max-width:620px}
+
+/* top bar */
+.topbar{background:var(--soft);color:var(--muted);font-size:14px;border-bottom:1px solid var(--line)}
+.topbar .in{display:flex;flex-wrap:wrap;gap:6px 28px;justify-content:space-between;padding-top:10px;padding-bottom:10px}
+.topbar .l{display:flex;flex-wrap:wrap;gap:6px 24px}
+
+/* header */
+.header{background:var(--surface);border-bottom:1px solid var(--line)}
+.header .in{display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between;padding-top:18px;padding-bottom:18px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo b{display:block;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-0.01em;line-height:1.15}
+.logo small{display:block;font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.nav{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:15px;font-weight:500}
+
+/* hero */
+.hero{position:relative;overflow:hidden}
+.hero .rings{position:absolute;right:-220px;top:-180px;opacity:.55;pointer-events:none}
+.hero .in{position:relative;display:flex;flex-wrap:wrap;gap:48px 56px;align-items:center;padding-top:clamp(40px,7vw,88px);padding-bottom:clamp(40px,7vw,88px)}
+.hero-l{flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:24px}
+.pill{align-self:flex-start;background:var(--soft);color:var(--accent);font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:999px}
+.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(32px,5.4vw,58px);line-height:1.08;letter-spacing:-0.03em;text-wrap:balance}
+.lead{font-size:18px;color:var(--muted);max-width:520px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.checks{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:15px;font-weight:500;margin-top:8px}
+.checks li{display:flex;align-items:center;gap:8px}
+
+.reach{flex:1 1 320px;max-width:460px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 18px 48px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:18px}
+.reach h2{font-family:var(--display);font-weight:600;font-size:22px;letter-spacing:-0.01em}
+.row{display:flex;flex-direction:column;gap:2px;padding-top:16px;border-top:1px solid var(--line)}
+.row:first-of-type{border-top:0;padding-top:0}
+.lbl{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.big{font-family:var(--display);font-weight:600;font-size:24px;letter-spacing:-0.01em;font-variant-numeric:tabular-nums}
+.val{overflow-wrap:anywhere}
+
+/* departments */
+.depts{padding:40px 0 72px}
+.depts .in{display:flex;flex-direction:column;gap:32px}
+.grid{display:flex;flex-wrap:wrap;gap:16px}
+.card{flex:1 1 280px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.ico{width:48px;height:48px;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center}
+.ico svg{stroke:var(--accent);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card b{font-family:var(--display);font-weight:500;font-size:19px}
+.card span{font-size:15px;color:var(--muted)}
+
+/* home collection */
+.home{padding:0 0 72px}
+.homebox{background:var(--soft);border-radius:28px;padding:clamp(24px,5vw,56px);display:flex;flex-wrap:wrap;gap:40px 56px;align-items:flex-start}
+.homebox .l{flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:20px}
+.homebox .l p{color:var(--muted);max-width:460px}
+.homebox .r{flex:1 1 380px;min-width:0;display:flex;flex-direction:column}
+.step{padding:18px 0;border-top:1px solid var(--chip-line);display:flex;flex-direction:column;gap:2px}
+.step:last-child{border-bottom:1px solid var(--chip-line)}
+.step b{font-family:var(--display);font-weight:500;font-size:18px}
+.step span{font-size:15px;color:var(--muted)}
+
+/* social */
+.social{padding:0 0 72px}
+.social .in{display:flex;flex-wrap:wrap;gap:32px 64px;align-items:center}
+.social .l{flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:16px}
+.social .l p{color:var(--muted);max-width:480px}
+.social .r{flex:1 1 420px;min-width:0;display:flex;flex-wrap:wrap;gap:16px}
+.stat{flex:1 1 150px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:6px}
+.stat b{font-family:var(--display);font-weight:600;font-size:40px;letter-spacing:-0.03em;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat span{font-size:15px;color:var(--muted)}
+
+/* contacts */
+.contacts{padding:0 0 72px}
+.cbox{background:var(--accent);color:var(--on-accent);border-radius:28px;padding:clamp(24px,5vw,56px);display:flex;flex-wrap:wrap;gap:32px 56px;align-items:center;justify-content:space-between}
+.cbox .l{flex:1 1 340px;min-width:0;display:flex;flex-direction:column;gap:12px}
+.cbox .l p{opacity:.92;max-width:460px}
+.cbox .r{flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.phone{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,38px);letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+
+/* footer */
+.footer{background:var(--surface);border-top:1px solid var(--line)}
+.footer .in{padding-top:48px;padding-bottom:max(32px,env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:32px}
+.fcols{display:flex;flex-wrap:wrap;gap:32px 48px;justify-content:space-between}
+.fcols > div{flex:1 1 200px;min-width:0;display:flex;flex-direction:column;gap:10px;font-size:15px;color:var(--muted)}
+.fcols > div:first-child{flex-basis:280px}
+.fcols b{color:var(--ink);font-weight:600}
+.legal{padding-top:24px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+</style>
+
+</head>
+<body>
+<div lang="tr">
+
+<div id="top" class="topbar">
+  <div class="in">
+    <div class="l"><span>(0392) 365 11 55</span><span>0533 875 10 85</span></div>
+    <span>7/24 acil laboratuvar hizmeti</span>
+  </div>
+</div>
+
+<header class="header">
+  <div class="in">
+    <a href="#top" class="logo">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" style="fill:var(--accent)"/><path d="M20 10v20M10 20h20" style="stroke:var(--on-accent)" stroke-width="4" stroke-linecap="round"/></svg>
+      <span><b>Magusa Klinik Tahlil</b><small>Laboratuvarı · Gazimağusa</small></span>
+    </a>
+    <nav class="nav" aria-label="Ana menü">
+      <a href="#departments">Bölümler</a><a href="#home">Evden kan alımı</a><a href="#social">Sosyal sorumluluk</a><a href="#contacts">İletişim</a>
+    </nav>
+    <a href="#contacts" class="btn btn-fill">Hemen arayın</a>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="rings" width="760" height="760" viewBox="0 0 760 760" aria-hidden="true"><circle cx="380" cy="380" r="370" fill="none" style="stroke:var(--soft)" stroke-width="2"/><circle cx="380" cy="380" r="290" fill="none" style="stroke:var(--soft)" stroke-width="2"/><circle cx="380" cy="380" r="210" style="fill:var(--softer)"/></svg>
+  <div class="in">
+    <div class="hero-l">
+      <span class="pill">Hızlı · Güvenilir</span>
+      <h1>Gazimağusa'da hızlı ve güvenilir laboratuvar</h1>
+      <p class="lead">Evden kan alımı, sonuçların size ve doktorunuza ulaştırılması ve 7/24 acil laboratuvar hizmeti.</p>
+      <div class="btns"><a href="#contacts" class="btn btn-fill">Bizi arayın</a><a href="#departments" class="btn btn-line">Bölümlerimiz</a></div>
+      <ul class="checks">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Evden kan alımı</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sonuç hastaya ve doktora</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="stroke:var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>7/24 acil hizmet</li>
+      </ul>
+    </div>
+    <div class="reach">
+      <h2>Bize ulaşın</h2>
+      <div class="row"><span class="lbl">Telefon</span><span class="big">(0392) 365 11 55</span></div>
+      <div class="row"><span class="lbl">Cep telefonu</span><span class="big">0533 875 10 85</span></div>
+      <div class="row"><span class="lbl">E-posta</span><span class="val">netice_bildirim@kliniklab.net</span></div>
+      <div class="row"><span class="lbl">Adres</span><span class="val">İsmet İnönü Bulvarı, Gazimağusa</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="departments" class="depts">
+  <div class="in">
+    <div class="head"><span class="eyebrow">Bölümler</span><h2 class="h2">Laboratuvarımızdaki test alanları</h2></div>
+    <div class="grid">
+      <div class="card"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6"/><path d="M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 15h9"/></svg></span><b>Biyokimya</b><span>Kan ve vücut sıvılarının kimyasal incelemesi.</span></div>
+      <div class="card"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="9.5" cy="10" r="1.5"/><circle cx="14.5" cy="13.5" r="1.8"/><circle cx="13" cy="8.5" r=".8"/></svg></span><b>Mikrobiyoloji</b><span>Mikroorganizmaların incelenmesi.</span></div>
+      <div class="card"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M7 7l5 5 5-5M7 17l5-5 5 5"/></svg></span><b>Seroloji</b><span>Kan serumunun incelenmesi.</span></div>
+      <div class="card"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s6 6.2 6 10.5a6 6 0 0 1-12 0C6 9.2 12 3 12 3z"/></svg></span><b>Hematoloji</b><span>Kanın ve kan hücrelerinin incelenmesi.</span></div>
+      <div class="card"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span><b>Endokrinoloji</b><span>Hormonlarla ilgili incelemeler.</span></div>
+      <div class="card"><span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.4A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg></span><b>Kardiyoloji</b><span>Kalp ve damar sağlığıyla ilgili incelemeler.</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="home" class="home">
+  <div class="in">
+    <div class="homebox">
+      <div class="l">
+        <span class="eyebrow">Evden kan alımı</span>
+        <h2 class="h2">Evden kan alımı, sonuç size ve doktorunuza</h2>
+        <p>Evden kan alımı hizmeti veriyoruz. Sonuçlarınız size ve doktorunuza ulaştırılır.</p>
+        <div class="btns"><a href="#contacts" class="btn btn-fill">Bizi arayın</a></div>
+      </div>
+      <div class="r">
+        <div class="step"><b>Evden kan alımı</b><span>Kan alımı evinizde yapılır.</span></div>
+        <div class="step"><b>Sonuç size ve doktorunuza</b><span>Sonuçlar hem size hem doktorunuza ulaştırılır.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="social" class="social">
+  <div class="in">
+    <div class="l">
+      <span class="eyebrow">Sosyal sorumluluk</span>
+      <h2 class="h2">Sağlıklı Yaşam projesi</h2>
+      <p>2013 yılında "Sağlıklı Yaşam" sloganıyla yaşlıların ayağına giderek ücretsiz sağlık taramasından yararlanmalarını sağladık. Bu proje Kıbrıs'ta bir ilkti ve bununla gurur duyuyoruz.</p>
+    </div>
+    <div class="r">
+      <div class="stat"><b>230</b><span>yaşlıya ücretsiz sağlık taraması</span></div>
+      <div class="stat"><b>2013</b><span>Sağlıklı Yaşam projesi</span></div>
+      <div class="stat"><b>7/24</b><span>acil laboratuvar hizmeti</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" class="contacts">
+  <div class="in">
+    <div class="cbox">
+      <div class="l"><h2 class="h2">Acil mi? 7/24 yanınızdayız</h2><p>7/24 on call acil laboratuvar hizmeti için bizi arayın.</p></div>
+      <div class="r"><span class="phone">(0392) 365 11 55</span><span class="phone">0533 875 10 85</span><span>İsmet İnönü Bulvarı, Gazimağusa</span></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="in">
+    <div class="fcols">
+      <div>
+        <span class="logo"><svg width="36" height="36" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="20" style="fill:var(--accent)"/><path d="M20 10v20M10 20h20" style="stroke:var(--on-accent)" stroke-width="4" stroke-linecap="round"/></svg><b style="font-size:17px;color:var(--ink)">Magusa Klinik Tahlil Laboratuvarı</b></span>
+      </div>
+      <div><b>Bölümler</b><a href="#departments">Biyokimya</a><a href="#departments">Mikrobiyoloji</a><a href="#departments">Seroloji</a><a href="#departments">Hematoloji</a></div>
+      <div><b>İletişim</b><span>(0392) 365 11 55</span><span>0533 875 10 85</span><span style="overflow-wrap:anywhere">netice_bildirim@kliniklab.net</span><span>İsmet İnönü Bulvarı, Gazimağusa</span></div>
+    </div>
+    <div class="legal">© Magusa Klinik Tahlil Laboratuvarı · ÖZHİM Sağlık Hizmetleri Ltd. Tüm hakları saklıdır.</div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
